@@ -1,0 +1,39 @@
+- name: link resolver
+  notify:
+    - restart resolved
+  file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolv.conf
+    force: yes
+    state: link
+  tags:
+    - resolved
+
+- name: drop mixins
+  notify:
+    - restart resolved
+  with_items: '{{ resolved_remove }}'
+  file:
+    path: '/run/systemd/resolved.conf.d/{{ item }}'
+    state: absent
+  tags:
+    - resolved
+
+- name: write config
+  notify:
+    - restart resolved
+  template:
+    src: config.j2
+    dest: /etc/systemd/resolved.conf
+  tags:
+    - resolved
+
+- name: service start
+  systemd:
+    name: systemd-resolved
+    state: started
+    daemon_reload: yes
+    masked: no
+    enabled: yes
+  tags:
+    - resolved
