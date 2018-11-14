@@ -1,4 +1,3 @@
 resolved_nameservers: []
 resolved_domains: []
-resolved_remove:
-  - isc-dhcp-v4-eth0.conf
+resolved_remove: []
