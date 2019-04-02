@@ -1,3 +1,10 @@
+- name: mixin directory
+  file:
+    path: /etc/systemd/resolved.conf.d
+    state: directory
+  tags:
+    - resolved
+
 - name: link resolver
   notify:
     - restart resolved
@@ -9,12 +16,24 @@
   tags:
     - resolved
 
-- name: drop mixins
+- name: mask dhcp
   notify:
     - restart resolved
-  with_items: '{{ resolved_remove }}'
+  when: resolved_dhcp_mask
   file:
-    path: '/run/systemd/resolved.conf.d/{{ item }}'
+    src: /dev/null
+    dest: /etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}
+    force: yes
+    state: link
+  tags:
+    - resolved
+
+- name: unmask dhcp
+  notify:
+    - restart resolved
+  when: not resolved_dhcp_mask
+  file:
+    path: /etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}
     state: absent
   tags:
     - resolved
