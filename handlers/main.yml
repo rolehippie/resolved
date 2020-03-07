@@ -1,5 +1,9 @@
-- name: restart resolved
+# Standards: 0.1
+---
+- name: Restart resolved
   systemd:
     name: systemd-resolved
     state: restarted
-    daemon_reload: yes
+    daemon_reload: True
+
+...
