@@ -9,7 +9,7 @@
 
 - name: Link resolver config
   notify:
-    - restart resolved
+    - Restart resolved
   file:
     src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
@@ -20,7 +20,7 @@
 
 - name: Mask dhcp config
   notify:
-    - restart resolved
+    - Restart resolved
   when: resolved_dhcp_mask
   file:
     src: /dev/null
@@ -32,7 +32,7 @@
 
 - name: Unmask dhcp config
   notify:
-    - restart resolved
+    - Restart resolved
   when: not resolved_dhcp_mask
   file:
     path: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
@@ -42,7 +42,7 @@
 
 - name: Write systemd config
   notify:
-    - restart resolved
+    - Restart resolved
   template:
     src: config.j2
     dest: /etc/systemd/resolved.conf
