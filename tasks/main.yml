@@ -1,13 +1,15 @@
-- name: mixin directory
+# Standards: 0.1
+---
+- name: Create mixin directory
   file:
     path: /etc/systemd/resolved.conf.d
     state: directory
   tags:
     - resolved
 
-- name: link resolver
+- name: Link resolver config
   notify:
-    - restart resolved
+    - Restart resolved
   file:
     src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
@@ -16,43 +18,45 @@
   tags:
     - resolved
 
-- name: mask dhcp
+- name: Mask dhcp config
   notify:
-    - restart resolved
+    - Restart resolved
   when: resolved_dhcp_mask
   file:
     src: /dev/null
-    dest: /etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}
+    dest: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
     force: yes
     state: link
   tags:
     - resolved
 
-- name: unmask dhcp
+- name: Unmask dhcp config
   notify:
-    - restart resolved
+    - Restart resolved
   when: not resolved_dhcp_mask
   file:
-    path: /etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}
+    path: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
     state: absent
   tags:
     - resolved
 
-- name: write config
+- name: Write systemd config
   notify:
-    - restart resolved
+    - Restart resolved
   template:
     src: config.j2
     dest: /etc/systemd/resolved.conf
   tags:
     - resolved
 
-- name: service start
+- name: Start resolved service
   systemd:
     name: systemd-resolved
     state: started
-    daemon_reload: yes
-    masked: no
-    enabled: yes
+    daemon_reload: True
+    masked: False
+    enabled: True
   tags:
     - resolved
+
+...

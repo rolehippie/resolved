@@ -1,4 +1,15 @@
+# Standards: 0.1
+---
+# @var resolved_nameservers:description: List of nameservers
 resolved_nameservers: []
+
+# @var resolved_domains:description: List of search domains
 resolved_domains: []
+
+# @var resolved_dhcp_mask:description: Mask DHCP config file
 resolved_dhcp_mask: True
+
+# @var resolved_dhcp_name:description: DHCP config file
 resolved_dhcp_name: isc-dhcp-v4-eth0.conf
+
+...
