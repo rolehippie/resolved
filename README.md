@@ -1,30 +1,72 @@
 # resolved
 
-TBD
+[![Build Status](https://cloud.drone.io/api/badges/rolehippie/resolved/status.svg)](https://cloud.drone.io/rolehippie/resolved)
 
+Ansible role to configure resolved
 
-## Security
+## Table of content
 
-If you find a security issue please contact thomas@webhippie.de first.
+* [Default Variables](#default-variables)
+  * [resolved_dhcp_mask](#resolved_dhcp_mask)
+  * [resolved_dhcp_name](#resolved_dhcp_name)
+  * [resolved_domains](#resolved_domains)
+  * [resolved_nameservers](#resolved_nameservers)
+* [Dependencies](#dependencies)
+* [License](#license)
+* [Author](#author)
 
+---
 
-## Contributing
+## Default Variables
 
-Fork -> Patch -> Push -> Pull Request
+### resolved_dhcp_mask
 
+Mask DHCP config file
 
-## Authors
+#### Default value
 
-* [Thomas Boerger](https://github.com/tboerger)
+```YAML
+resolved_dhcp_mask: true
+```
 
+### resolved_dhcp_name
+
+DHCP config file
+
+#### Default value
+
+```YAML
+resolved_dhcp_name: isc-dhcp-v4-eth0.conf
+```
+
+### resolved_domains
+
+List of search domains
+
+#### Default value
+
+```YAML
+resolved_domains: []
+```
+
+### resolved_nameservers
+
+List of nameservers
+
+#### Default value
+
+```YAML
+resolved_nameservers: []
+```
+
+## Dependencies
+
+- None
 
 ## License
 
 Apache-2.0
 
+## Author
 
-## Copyright
-
-```
-Copyright (c) 2018 Thomas Boerger <thomas@webhippie.de>
-```
+[Thomas Boerger](https://github.com/tboerger)
