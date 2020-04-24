@@ -1,3 +1,5 @@
 [Resolve]
 DNS={{ resolved_nameservers | join(" ") }}
 Domains={{ resolved_domains | join(" ") }}
+DNSStubListener={{ resolved_stub_listener }}
+ReadEtcHosts={{ resolved_read_etc_hosts }}
