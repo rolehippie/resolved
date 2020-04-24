@@ -11,6 +11,8 @@ Ansible role to configure resolved
   * [resolved_dhcp_name](#resolved_dhcp_name)
   * [resolved_domains](#resolved_domains)
   * [resolved_nameservers](#resolved_nameservers)
+  * [resolved_read_etc_hosts](#resolved_read_etc_hosts)
+  * [resolved_stub_listener](#resolved_stub_listener)
 * [Dependencies](#dependencies)
 * [License](#license)
 * [Author](#author)
@@ -59,9 +61,29 @@ List of nameservers
 resolved_nameservers: []
 ```
 
+### resolved_read_etc_hosts
+
+Read hosts from /etc/hosts
+
+#### Default value
+
+```YAML
+resolved_read_etc_hosts: yes
+```
+
+### resolved_stub_listener
+
+Enable a listening stub resolver
+
+#### Default value
+
+```YAML
+resolved_stub_listener: yes
+```
+
 ## Dependencies
 
-- None
+* None
 
 ## License
 
