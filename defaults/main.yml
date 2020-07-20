@@ -13,9 +13,9 @@ resolved_dhcp_mask: True
 resolved_dhcp_name: isc-dhcp-v4-eth0.conf
 
 # @var resolved_stub_listener:description: Enable a listening stub resolver
-resolved_stub_listener: "yes"
+resolved_stub_listener: True
 
 # @var resolved_read_etc_hosts:description: Read hosts from /etc/hosts
-resolved_read_etc_hosts: "yes"
+resolved_read_etc_hosts: True
 
 ...

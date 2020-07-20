@@ -68,7 +68,7 @@ Read hosts from /etc/hosts
 #### Default value
 
 ```YAML
-resolved_read_etc_hosts: yes
+resolved_read_etc_hosts: true
 ```
 
 ### resolved_stub_listener
@@ -78,7 +78,7 @@ Enable a listening stub resolver
 #### Default value
 
 ```YAML
-resolved_stub_listener: yes
+resolved_stub_listener: true
 ```
 
 ## Dependencies
