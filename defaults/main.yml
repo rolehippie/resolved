@@ -1,4 +1,4 @@
-# Standards: 0.1
+# Standards: 1.2
 ---
 # @var resolved_nameservers:description: List of nameservers
 resolved_nameservers: []
