@@ -8,13 +8,25 @@
     - resolved
 
 - name: Link resolver config
+  when: resolved_stub_listener
   notify:
     - Restart resolved
   file:
     src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
-    force: yes
+    force: True
     state: link
+  tags:
+    - resolved
+
+- name: Write resolver config
+  when: not resolved_stub_listener
+  notify:
+    - Restart resolved
+  template:
+    src: resolv.j2
+    dest: /etc/resolv.conf
+    force: True
   tags:
     - resolved
 
@@ -25,7 +37,7 @@
   file:
     src: /dev/null
     dest: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
-    force: yes
+    force: True
     state: link
   tags:
     - resolved
