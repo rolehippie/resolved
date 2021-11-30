@@ -1,3 +1,5 @@
 nameserver 127.0.0.1
 options edns0 trust-ad
+{% if resolved_domains | default(False) %}
 search {{ resolved_domains | join(" ") }}
+{% endif %}
