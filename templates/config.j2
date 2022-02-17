@@ -1,5 +1,7 @@
 [Resolve]
 DNS={{ resolved_nameservers | join(" ") }}
 Domains={{ resolved_domains | join(" ") }}
+{% if ansible_distribution_major_version | int >= 18 %}
 DNSStubListener={{ 'yes' if resolved_stub_listener else 'no' }}
 ReadEtcHosts={{ 'yes' if resolved_read_etc_hosts else 'no' }}
+{% endif %}

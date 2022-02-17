@@ -1,5 +1,11 @@
+{% if ansible_distribution_major_version | int >= 18 %}
 nameserver 127.0.0.1
 options edns0 trust-ad
+{% else %}
+{% for item in resolved_nameservers %}
+nameserver {{ item }}
+{% endfor %}
+{% endif %}
 {% if resolved_domains | default(False) %}
 search {{ resolved_domains | join(" ") }}
 {% endif %}
