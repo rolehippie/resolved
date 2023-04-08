@@ -7,7 +7,7 @@
 # [![Readme Workflow](https://github.com/rolehippie/resolved/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/resolved/actions/workflows/readme.yml)
 # [![Galaxy Workflow](https://github.com/rolehippie/resolved/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/resolved/actions/workflows/galaxy.yml)
 # [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/resolved)](https://github.com/rolehippie/resolved/blob/master/LICENSE)
-# [![Ansible Role](https://img.shields.io/ansible/role/51460)](https://galaxy.ansible.com/rolehippie/resolved)
+# [![Ansible Role](https://img.shields.io/badge/role-rolehippie.resolved-blue)](https://galaxy.ansible.com/rolehippie/resolved)
 #
 # Ansible role to configure systemd-resolved name resolver.
 #
