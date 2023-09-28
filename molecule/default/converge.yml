@@ -2,6 +2,8 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    resolved_stub_listener: False
   roles:
     - role: rolehippie.resolved
 
