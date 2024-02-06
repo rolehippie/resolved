@@ -1,6 +1,6 @@
 ---
 - name: Create mixin directory
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/resolved.conf.d
     state: directory
     owner: root
@@ -13,7 +13,7 @@
   when: resolved_stub_listener
   notify:
     - Restart resolved
-  file:
+  ansible.builtin.file:
     src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
     force: True
@@ -25,7 +25,7 @@
   when: not resolved_stub_listener
   notify:
     - Restart resolved
-  template:
+  ansible.builtin.template:
     src: resolv.j2
     dest: /etc/resolv.conf
     force: True
@@ -39,7 +39,7 @@
   notify:
     - Restart resolved
   when: resolved_dhcp_mask
-  file:
+  ansible.builtin.file:
     src: /dev/null
     dest: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
     force: True
@@ -51,7 +51,7 @@
   notify:
     - Restart resolved
   when: not resolved_dhcp_mask
-  file:
+  ansible.builtin.file:
     path: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
     state: absent
   tags:
@@ -60,7 +60,7 @@
 - name: Write systemd config
   notify:
     - Restart resolved
-  template:
+  ansible.builtin.template:
     src: config.j2
     dest: /etc/systemd/resolved.conf
     owner: root
@@ -70,7 +70,7 @@
     - resolved
 
 - name: Start resolved service
-  systemd:
+  ansible.builtin.systemd:
     name: systemd-resolved
     state: started
     daemon_reload: True
