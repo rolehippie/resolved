@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0](https://github.com/rolehippie/resolved/compare/v1.0.0...v2.0.0) (2024-02-12)
+
+
+### Features
+
+* drop support for ubuntu 18.04 ([01d8cd1](https://github.com/rolehippie/resolved/commit/01d8cd100bcdf5c99c970754df8fb52cc118d637))
+* used full qualified collection names ([52b878b](https://github.com/rolehippie/resolved/commit/52b878b276b0c79210f247065f734073840bc5f7))
+
 ## 1.0.0 (2023-01-05)
 
 
