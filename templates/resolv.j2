@@ -6,6 +6,6 @@ options edns0 trust-ad
 nameserver {{ item }}
 {% endfor %}
 {% endif %}
-{% if resolved_domains | default(False) %}
+{% if resolved_domains | default(false) %}
 search {{ resolved_domains | join(" ") }}
 {% endif %}

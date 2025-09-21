@@ -6,15 +6,15 @@ resolved_nameservers: []
 resolved_domains: []
 
 # @var resolved_dhcp_mask:description: Mask DHCP config file
-resolved_dhcp_mask: True
+resolved_dhcp_mask: true
 
 # @var resolved_dhcp_name:description: DHCP config file
 resolved_dhcp_name: isc-dhcp-v4-eth0.conf
 
 # @var resolved_stub_listener:description: Enable a listening stub resolver
-resolved_stub_listener: True
+resolved_stub_listener: true
 
 # @var resolved_read_etc_hosts:description: Read hosts from /etc/hosts
-resolved_read_etc_hosts: True
+resolved_read_etc_hosts: true
 
 ...

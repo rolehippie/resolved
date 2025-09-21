@@ -10,25 +10,27 @@
     - resolved
 
 - name: Link resolver config
-  when: resolved_stub_listener
+  when:
+    - resolved_stub_listener
   notify:
     - Restart resolved
   ansible.builtin.file:
     src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
-    force: True
+    force: true
     state: link
   tags:
     - resolved
 
 - name: Write resolver config
-  when: not resolved_stub_listener
+  when:
+    - not resolved_stub_listener
   notify:
     - Restart resolved
   ansible.builtin.template:
     src: resolv.j2
     dest: /etc/resolv.conf
-    force: True
+    force: true
     owner: root
     group: root
     mode: u=rw,g=r,o=r
@@ -38,11 +40,12 @@
 - name: Mask dhcp config
   notify:
     - Restart resolved
-  when: resolved_dhcp_mask
+  when:
+    - resolved_dhcp_mask
   ansible.builtin.file:
     src: /dev/null
     dest: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
-    force: True
+    force: true
     state: link
   tags:
     - resolved
@@ -50,7 +53,8 @@
 - name: Unmask dhcp config
   notify:
     - Restart resolved
-  when: not resolved_dhcp_mask
+  when:
+    - not resolved_dhcp_mask
   ansible.builtin.file:
     path: "/etc/systemd/resolved.conf.d/{{ resolved_dhcp_name }}"
     state: absent
@@ -73,9 +77,9 @@
   ansible.builtin.systemd:
     name: systemd-resolved
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - resolved
 
